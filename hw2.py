@@ -12,11 +12,8 @@ for element in list:
 #2----------------------------------------------------------------------------------------------------------------------
 list = []
 
-
 def swap(list, a, b):
     list[a], list[b] = list[b], list[a]
-    #return list
-
 
 while True:
     user_input = input("Введите значение для нового элемента или 'q' для завершения: ")
@@ -103,18 +100,18 @@ def add_item(name='Без имени', price='Бесценно', amount='0', mea
 
 while True: #Ввод товаров
     name = input('Введите название товара: ')
-    price = input('Введите цену товара: ')
-    amount = input('Введите количество товара: ')
+    price = int(input('Введите цену товара: '))
+    amount = int(input('Введите количество товара: '))
     measuring = input('Введите единицу измерения товара: ')
     warehouse.append(add_item(name, price, amount, measuring))
     fin = input('Товар добавлен. Добавить еще один товар? (д/н): ')
     if fin.lower() == 'н':
         break
 warehouse = list(enumerate(warehouse, 1))
-
+print("Структура: ", warehouse)
 analysis = {}
 names, prices, amounts, measurings = [], [], [], []
-for i in range(len(warehouse)): #
+for i in range(len(warehouse)):
     names.append(warehouse[i][1].get("Название"))
     prices.append(warehouse[i][1].get("Цена"))
     amounts.append(warehouse[i][1].get("Количество"))
@@ -123,6 +120,6 @@ for i in range(len(warehouse)): #
 analysis["Название"] = names
 analysis["Цена"] = prices
 analysis["Количество"] = amounts
-analysis["Единица Измерения"] = measurings
+analysis["Единица Измерения"] = list(set(measurings))
 
 print("Аналитика: ", analysis)
