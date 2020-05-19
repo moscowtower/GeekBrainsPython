@@ -5,14 +5,15 @@ b = int(input('Введите делитель: '))
 
 def divide(a, b):
     """ Возвращает частное от деления и остаток, если он имеется """
-    if a == 0 or b == 0:
-        return 0
-    else:
+    try:
+        result = a/b
         divider = divmod(a, b)
         if divider[-1] == 0:
             print(f'Результат деления {a} на {b}: ',str(divider[0]))
         else:
             print(f'Результат деления {a} на {b}: ',str(divider[0]) + ', с остатком ' + str(divider[-1]), ' ≈ ', round(a/b))
+    except ZeroDivisionError:
+        print("Вы попытались разделить на ноль. Хорошая попытка.")
 
 
 divide(a, b)
@@ -61,13 +62,13 @@ def my_func2(x, y):
     """Возвращает x в степени -y"""
     x = int(x)
     y = abs(int(y))
-    for x in range(y):
+    for i in range(y-1):
         x *= x
     result = 1 / x
     return result
 
 
-print('Результат возведения числа x в степень y: ', my_func(5, -2))
+print('Результат возведения числа x в степень y: ', my_func2(5, -2))
 
 
 #5----------------------------------------------------------------------------------------------------------------------
@@ -94,17 +95,27 @@ number_line()
 
 
 #6----------------------------------------------------------------------------------------------------------------------
-def int_func(text):
+def int_func(word):
     """Реализует функцию .title(), но через utf-8 штучки"""
-    charlist = list(text)
-    new_letter = chr(ord(text[0])-32)
-    new_text = new_letter + text[1:]
+    new_letter = chr(ord(word[0])-32)
+    new_text = new_letter + word[1:]
     return str(new_text)
 
+def isLatin(line):
+    """Возвращает False если обнаружены нелатинские символы"""
+    try:
+        line.encode(encoding='utf-8').decode('ascii')
+    except UnicodeDecodeError:
+        return False
+    else:
+        return True
 
-textline = list(input("Введите строку слов на латинице через пробел: ").lower().strip().split())
+textline = input("Введите строку слов на латинице через пробел: ").lower().strip()
 new_textline = ''
-for el in textline:
-    new_textline += int_func(el) + ' '
-print(new_textline)
+if isLatin(textline):
+    for el in textline.split():
+        new_textline += int_func(el) + ' '
+    print(new_textline)
+else:
+    print('Принимаются только латинские буквы.')
 
