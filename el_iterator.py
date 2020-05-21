@@ -6,7 +6,8 @@ from random import randint
 cycle_list = [i + randint(0, 10) for i in range(10)]
 i = 1
 print('Дарю тебе 10 случайных интов:')
-for el in cycle(cycle_list):
+
+for el in cycle(cycle_list, 10):
     if i > 10:
         break
     print(f'{i}: ', el)
