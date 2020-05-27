@@ -1,1 +1,13 @@
-[{"MMM": 10000000000, "GeekBrains": 198198, "JetBrains": 542902, "VyatskyKvas": -232223, "TimeWeb": 0, "RJD": 99500}, {"average_profit": 2500210150}]
+[
+    {
+        "МММ": 10000000000,
+        "GeekBrains": 198198,
+        "JetBrains": 542902,
+        "ВятскийКвас": -232223,
+        "TimeWeb": 0,
+        "РЖД": 99500
+    },
+    {
+        "average_profit": 2500210150
+    }
+]

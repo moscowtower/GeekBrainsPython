@@ -14,9 +14,8 @@ with open('out_file.txt', 'w', encoding='utf-8') as file:
 
 
 #2----------------------------------------------------------------------------------------------------------------------
-with open('testfile_2.txt') as file:
-    lines = file.readlines()
 with open('testfile_2.txt', 'r', encoding='utf-8') as file:
+    lines = file.readlines()
     for index, value in enumerate(lines):
         num_words = len(value.split())
         result = (f'Line #{index+1}: "{value}" has {num_words} word' + ('s' if num_words > 1 else '')).replace('\n', '')
@@ -24,10 +23,9 @@ with open('testfile_2.txt', 'r', encoding='utf-8') as file:
 
 
 #3----------------------------------------------------------------------------------------------------------------------
-salaries = []
 with open('employees.txt', 'r', encoding='utf-8') as file:
+    salaries = []
     lines = file.readlines()
-with open('employees.txt', 'r', encoding='utf-8') as file:
     for i in range(len(lines)):
         employee = lines[i].split()[0]
         salary = float(lines[i].split()[1])
@@ -78,8 +76,6 @@ with open('studies.txt', 'r+', encoding='utf-8') as file:
 
 studies_dict = {names[i]:sums[i] for i in range(len(names))}
 print(studies_dict)
-
-
 #7----------------------------------------------------------------------------------------------------------------------
 def calc_profit(revenue, costs):
     return revenue-costs
@@ -98,5 +94,5 @@ result_list = [{names[i]:profits[i] for i in range(len(names))}, {'average_profi
 print(result_list)
 
 with open('firms_profits.json', 'w', encoding='utf-8') as json_file:
-    json.dump(result_list, json_file)
+    json.dump(result_list, json_file, ensure_ascii=False, separators=(',', ': '), indent=4)
 
