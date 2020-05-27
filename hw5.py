@@ -66,7 +66,9 @@ with open('studies.txt', 'r+', encoding='utf-8') as file:
     sums = []
     for line in file:
         line_list = line.split()
-        names.append(line_list[0])
+        subj_name = line_list[0]
+        subj_name = subj_name[0:subj_name.index(':')]
+        names.append(subj_name)
         result = 0
         for element in line_list[1:]:
             if '(' in element:
@@ -76,6 +78,7 @@ with open('studies.txt', 'r+', encoding='utf-8') as file:
 
 studies_dict = {names[i]:sums[i] for i in range(len(names))}
 print(studies_dict)
+
 #7----------------------------------------------------------------------------------------------------------------------
 def calc_profit(revenue, costs):
     return revenue-costs
