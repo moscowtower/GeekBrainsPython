@@ -78,6 +78,8 @@ with open('studies.txt', 'r+', encoding='utf-8') as file:
 
 studies_dict = {names[i]:sums[i] for i in range(len(names))}
 print(studies_dict)
+
+
 #7----------------------------------------------------------------------------------------------------------------------
 def calc_profit(revenue, costs):
     return revenue-costs
