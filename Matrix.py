@@ -15,5 +15,9 @@ class Matrix:
 
 user_matrix = Matrix([[3, 5, 32], [2, 4, 6], [-1, 64, -8]])
 bad_matrix = Matrix([[5, 2, 3], [6, 5, 3]])
+x2_matrix = Matrix([[1,2], [3, 4]])
 print(user_matrix + bad_matrix)
+print()
 print(user_matrix + user_matrix)
+print()
+print(x2_matrix+x2_matrix)
