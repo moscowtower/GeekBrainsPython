@@ -9,13 +9,22 @@ class NumsOnlyError(TypeError):
             if el == 'q':
                 break
             try:
-                if not el.isdigit():
+                try:
+                    a = float(el)
+                    self.the_list.append(el)
+                    continue
+                except ValueError:
                     raise NumsOnlyError(self.message)
                 else:
-                    self.the_list.append(el)
+                    if not el.lstrip('-').isdigit() :
+                        raise NumsOnlyError(self.message)
+                    else:
+                        self.the_list.append(el)
             except NumsOnlyError as e:
                 print(e)
                 continue
         print(self.the_list)
+
+
 
 num = NumsOnlyError().work()

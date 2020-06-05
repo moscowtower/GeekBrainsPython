@@ -3,7 +3,6 @@ class MyLittleDivisionError(ZeroDivisionError):
         self.dividend = dividend
         self.devisor = devisor
         self.message = message
-        super().__init__(self.message)
         if self.devisor == 0:
             print(self.message)
 
